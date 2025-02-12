@@ -1,5 +1,4 @@
 //Printing on console
-import 'dart:ffi';
 
 void main(){
   print("Hello from the console");

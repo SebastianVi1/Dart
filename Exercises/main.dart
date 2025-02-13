@@ -1,40 +1,45 @@
 import 'dart:io';
-import 'task.dart';
-import 'task_list.dart';
+import 'Database.dart';
 
-void main(){
-  
+void main() async{
+  var database = Database();
   
 
   
   while (true){
+    print('');
+    print('       ___OPTIONS___      ');
     print('1. Add a task.');
     print('2. SHow tasks.');
     print('3. Compleate task.');
     print('4. Delete task.');
-    print('5. Exit.');
+    print('5. Add an external file task.');
+
+    print('');
+  
     stdout.write('Choose an option:');
     int option = int.parse(stdin.readLineSync() ?? '5');
-    var database = Database();
-  
-    
     switch (option){
       case 1:
-        database.addTask();
+      stdout.write('Task to do: ');
+      String task = stdin.readLineSync()!;
+      database.addTask(task);
       
       case 2:
         database.showTasks();
       
       case 3:
-      var index = 0;
-      database.checkTask(Database.taskList[index]);
+      database.checkTask();
+      break;
+
       
       case 4:
       database.deleteTask();
+      break;
 
       case 5:
+        database.addExternalTask();
         break;
-      
     }
     
   }

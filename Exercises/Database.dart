@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import '../async.dart';
 import 'task.dart';
 
 class Database{
@@ -17,6 +16,7 @@ class Database{
   }
 
   void deleteTask(){
+    showTasks();
     stdout.write('Number of task to deleate: ');
     var number = int.parse(stdin.readLineSync()!);
     taskList.remove(taskList[number-1]);
@@ -61,11 +61,4 @@ class Database{
     taskList[option-1].checkTaskCompleted();
   }
 
-  void addExternalTask() async{
-    
-    final task = await readFileAsync('file.txt');
-    print("hecho");
-    print(task);
-    addTask(task);
-  }
 }

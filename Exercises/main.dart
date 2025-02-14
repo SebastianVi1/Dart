@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../async.dart';
 import 'Database.dart';
 
 void main() async{
@@ -38,8 +39,12 @@ void main() async{
       break;
 
       case 5:
-        database.addExternalTask();
+        final str = await readFileAsync('Exercises/file.txt');
+        database.addTask(str);
         break;
+      
+      case 6:
+        return;
     }
     
   }
